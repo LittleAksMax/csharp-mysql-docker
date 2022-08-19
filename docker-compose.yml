@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: ${MYSQL_HOST}
+    image: mysql:${MYSQL_VERSION}
+    command: --init-file /docker-entrypoint-initdb.d/init.sql
+    restart: always
+    environment:
+      MYSQL_ROOT_USER: ${MYSQL_ROOT_USER}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "33061:3306"
+    volumes:
+      - "./db/sql/init.sql:/docker-entrypoint-initdb.d/init.sql"
+  adminer:
+    container_name: adminer
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
