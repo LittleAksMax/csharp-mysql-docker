@@ -5,7 +5,6 @@ services:
     container_name: ${MYSQL_HOST}
     image: mysql:${MYSQL_VERSION}
     command: --init-file /docker-entrypoint-initdb.d/init.sql
-    restart: always
     environment:
       MYSQL_ROOT_USER: ${MYSQL_ROOT_USER}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -16,6 +15,5 @@ services:
   adminer:
     container_name: adminer
     image: adminer
-    restart: always
     ports:
-      - "8080:8080"
+      - "8000:8080"

@@ -1,1 +1,1 @@
-docker compose --env-file ./db/.env.Dev up --build
+docker compose --env-file .env.Dev up
